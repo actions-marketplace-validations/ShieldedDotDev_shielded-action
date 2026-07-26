@@ -3,7 +3,7 @@ import { ShieldedAPI } from 'shielded-cli';
 
 (async function run() {
 	try {
-		const token    = core.getInput('shielded-token');
+		const token    = core.getInput('shielded-token', { required: true });
 		const shieldKey = core.getInput('shielded-key');
 		const endpoint = core.getInput('endpoint');
 		const title    = core.getInput('title');
