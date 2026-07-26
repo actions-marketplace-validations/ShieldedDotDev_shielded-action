@@ -4,6 +4,8 @@ inputs:
   shielded-token:
     description: 'Shielded.dev API token'
     required: true
+  shielded-key:
+    description: 'Optional shield key'
   title:
     description: 'Badge title'
   color:
@@ -13,7 +15,7 @@ inputs:
   endpoint:
     description: 'Custom Shielded API endpoint'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
 
 branding:

@@ -7,7 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^3.0.1",
-    "shielded-cli": "^0.2.0"
+    "shielded-cli": "^0.3.0"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.38.4"

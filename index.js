@@ -1,9 +1,10 @@
-const core = require('@actions/core');
-const shielded = require('shielded-cli');
+import * as core from '@actions/core';
+import { ShieldedAPI } from 'shielded-cli';
 
 (async function run() {
 	try {
 		const token    = core.getInput('shielded-token');
+		const shieldKey = core.getInput('shielded-key');
 		const endpoint = core.getInput('endpoint');
 		const title    = core.getInput('title');
 		const color    = core.getInput('color');
@@ -15,6 +16,10 @@ const shielded = require('shielded-cli');
 
 		if (endpoint) {
 			options.endpoint = endpoint;
+		}
+
+		if (shieldKey) {
+			options.shieldKey = shieldKey;
 		}
 
 		if (title) {
@@ -29,7 +34,7 @@ const shielded = require('shielded-cli');
 			options.color = color;
 		}
 
-		const s = new shielded.ShieldedAPI();
+		const s = new ShieldedAPI();
 		await s.updateShield(options);
 	} catch (error) {
 		core.setFailed(error.message);
