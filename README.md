@@ -41,17 +41,25 @@ jobs:
         uses: shieldeddotdev/shielded-action@v1
         with:
           shielded-token: ${{ secrets.SHIELDED_TOKEN }}
-          # Optional: identify the shield by key
-          shielded-key: 'build-status'
           title: 'Title of the badge'
           color: '0011aa'
           text: '0 warnings'
 ```
 
+### Using a shield key
+
+To update or create a shield by key, provide a user token and the shield key:
+
+```yaml
+        with:
+          shielded-token: ${{ secrets.SHIELDED_USER_TOKEN }}
+          shielded-key: 'build-status'
+```
+
 ## Inputs
 
 - **shielded-token** **(Required)** - Your shielded.dev token
-- **shielded-key** _(Optional)_ - The shield key to send with the update. When omitted, the action behaves as it did before.
+- **shielded-key** _(Optional)_ - The shield key to send with the update. It can only be used with a user token; omit it when using a shield token. When omitted, the action behaves as it did before.
 - **endpoint** _(Optional)_ - The endpoint to use. Defaults to `https://api.shielded.dev/`
 - **title** _(Optional)_ - The title of the badge - omitting this will leave it as-is
 - **color** _(Optional)_ - The color of the badge - omitting this will leave it as-is
