@@ -38,7 +38,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Update Shielded.dev Badge
-        uses: shieldeddotdev/shielded-action@v1
+        uses: shieldeddotdev/shielded-action@v2
         with:
           shielded-token: ${{ secrets.SHIELDED_TOKEN }}
           title: 'Title of the badge'
