@@ -39,7 +39,11 @@ import { ShieldedAPI } from 'shielded-cli';
 		}
 
 		const s = new ShieldedAPI();
-		await s.updateShield(options);
+		const shield = await s.updateShield(options);
+		if (!shield || !shield.ShieldURL) {
+			throw new Error('Shielded API response did not include ShieldURL.');
+		}
+		core.setOutput('shield-url', shield.ShieldURL);
 	} catch (error) {
 		core.setFailed(error.message);
 	}
