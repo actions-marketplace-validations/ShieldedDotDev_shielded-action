@@ -38,12 +38,19 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Update Shielded.dev Badge
+        id: shield
         uses: shieldeddotdev/shielded-action@v2
         with:
           shielded-token: ${{ secrets.SHIELDED_TOKEN }}
           title: 'Title of the badge'
           color: '0011aa'
           text: '0 warnings'
+```
+
+The action sets `shield-url` after a successful update:
+
+```yaml
+      - run: echo "${{ steps.shield.outputs.shield-url }}"
 ```
 
 ### Using a shield key

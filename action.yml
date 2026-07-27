@@ -13,6 +13,9 @@ inputs:
     description: 'Badge text'
   endpoint:
     description: 'Custom Shielded API endpoint'
+outputs:
+  shield-url:
+    description: 'Public URL of the updated shield'
 runs:
   using: 'node24'
   main: 'dist/index.js'

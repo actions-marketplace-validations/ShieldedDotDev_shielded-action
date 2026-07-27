@@ -39,7 +39,8 @@ import { ShieldedAPI } from 'shielded-cli';
 		}
 
 		const s = new ShieldedAPI();
-		await s.updateShield(options);
+		const shield = await s.updateShield(options);
+		core.setOutput('shield-url', shield.ShieldURL);
 	} catch (error) {
 		core.setFailed(error.message);
 	}
