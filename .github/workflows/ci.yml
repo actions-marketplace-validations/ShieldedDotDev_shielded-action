@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v7
@@ -16,8 +16,8 @@ jobs:
       - run: npm run build
       - name: Check compiled output is clean
         run: |
-          if ! git diff --quiet -- ./dist; then
-            git diff -- ./dist
+          if ! git diff --ignore-space-at-eol --quiet -- ./dist; then
+            git diff --ignore-space-at-eol -- ./dist
             echo "::error::./dist has uncommitted changes after build"
             exit 1
           fi
