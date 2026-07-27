@@ -11,7 +11,7 @@ import { ShieldedAPI } from 'shielded-cli';
 		const text     = core.getInput('text');
 
 		if (!token) {
-			throw new Error('Set shielded-token or SHIELDED_TOKEN.');
+			throw new Error('Missing token: set the shielded-token input or the SHIELDED_TOKEN environment variable.');
 		}
 
 		let options = {
