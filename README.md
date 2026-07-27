@@ -56,9 +56,22 @@ To update or create a shield by key, provide a user token and the shield key:
           shielded-key: 'build-status'
 ```
 
+### Using an environment variable
+
+When `shielded-token` is omitted, the action uses `SHIELDED_TOKEN` from its environment:
+
+```yaml
+      - name: Update Shielded.dev Badge
+        uses: shieldeddotdev/shielded-action@v2
+        env:
+          SHIELDED_TOKEN: ${{ secrets.SHIELDED_TOKEN }}
+        with:
+          text: '0 warnings'
+```
+
 ## Inputs
 
-- **shielded-token** **(Required)** - Your shielded.dev token
+- **shielded-token** _(Optional)_ - Your Shielded.dev token. It takes precedence over `SHIELDED_TOKEN`.
 - **shielded-key** _(Optional)_ - The shield key to send with the update. It can only be used with a user token; omit it when using a shield token. When omitted, the action behaves as it did before.
 - **endpoint** _(Optional)_ - The endpoint to use. Defaults to `https://api.shielded.dev/`
 - **title** _(Optional)_ - The title of the badge - omitting this will leave it as-is

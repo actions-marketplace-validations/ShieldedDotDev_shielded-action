@@ -3,12 +3,16 @@ import { ShieldedAPI } from 'shielded-cli';
 
 (async function run() {
 	try {
-		const token    = core.getInput('shielded-token', { required: true });
+		const token    = (core.getInput('shielded-token') || process.env.SHIELDED_TOKEN || '').trim();
 		const shieldKey = core.getInput('shielded-key');
 		const endpoint = core.getInput('endpoint');
 		const title    = core.getInput('title');
 		const color    = core.getInput('color');
 		const text     = core.getInput('text');
+
+		if (!token) {
+			throw new Error('Missing token: set the shielded-token input or the SHIELDED_TOKEN environment variable.');
+		}
 
 		let options = {
 			token: token,

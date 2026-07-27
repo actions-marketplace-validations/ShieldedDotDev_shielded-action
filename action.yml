@@ -2,8 +2,7 @@ name: 'Shielded.dev Badge Action'
 description: 'Update a badge on Shielded.dev - the free README badge hosting service.'
 inputs:
   shielded-token:
-    description: 'Shielded.dev API token'
-    required: true
+    description: 'Shielded.dev API token. If omitted, the action uses SHIELDED_TOKEN from the environment.'
   shielded-key:
     description: 'Optional shield key'
   title:

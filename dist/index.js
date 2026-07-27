@@ -34988,12 +34988,16 @@ var sdk = __nccwpck_require__(3528);
 
 (async function run() {
 	try {
-		const token    = getInput('shielded-token', { required: true });
+		const token    = (getInput('shielded-token') || process.env.SHIELDED_TOKEN || '').trim();
 		const shieldKey = getInput('shielded-key');
 		const endpoint = getInput('endpoint');
 		const title    = getInput('title');
 		const color    = getInput('color');
 		const text     = getInput('text');
+
+		if (!token) {
+			throw new Error('Missing token: set the shielded-token input or the SHIELDED_TOKEN environment variable.');
+		}
 
 		let options = {
 			token: token,
