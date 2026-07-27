@@ -35025,6 +35025,9 @@ var sdk = __nccwpck_require__(3528);
 
 		const s = new sdk.ShieldedAPI();
 		const shield = await s.updateShield(options);
+		if (!shield || !shield.ShieldURL) {
+			throw new Error('Shielded API response did not include ShieldURL.');
+		}
 		setOutput('shield-url', shield.ShieldURL);
 	} catch (error) {
 		setFailed(error.message);
