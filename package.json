@@ -2,7 +2,7 @@
   "name": "shielded-action",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": "Jesse Donat <donatj@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -10,9 +10,12 @@
     "shielded-cli": "^0.3.0"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.44.1"
+    "@types/node": "^24.0.0",
+    "@vercel/ncc": "^0.44.1",
+    "typescript": "^5.9.3"
   },
   "scripts": {
-    "build": "npx ncc build index.js -o dist --license licenses.txt"
+    "build": "npx ncc build index.ts -o dist --license licenses.txt",
+    "typecheck": "tsc --noEmit"
   }
 }
